@@ -131,6 +131,7 @@ class _ChatPageState extends State<ChatPage> {
     );
   }
 
+  /* Handling file selection prompt */
   void _handleFileSelection() async {
     final result = await FilePicker.platform.pickFiles(
       type: FileType.any,
@@ -151,6 +152,7 @@ class _ChatPageState extends State<ChatPage> {
     }
   }
 
+  /* Handling image selection prompt */
   void _handleImageSelection() async {
     final result = await ImagePicker().pickImage(
       imageQuality: 70,
@@ -235,7 +237,8 @@ class _ChatPageState extends State<ChatPage> {
       _messages[index] = updatedMessage;
     });
   }
-
+ 
+  /* Handling send message prompt */
   void _handleSendPressed(types.PartialText message) {
     final textMessage = types.TextMessage(
       author: _user,
@@ -247,6 +250,7 @@ class _ChatPageState extends State<ChatPage> {
     _addMessage(textMessage);
   }
 
+  /* Handling message loading action */
   void _loadMessages() async {
     final response = await rootBundle.loadString('assets/messages.json');
     final messages = (jsonDecode(response) as List)
